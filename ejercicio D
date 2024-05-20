@@ -1,0 +1,55 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package proy;
+
+/**
+ *
+ * @author Usuario
+ */
+import javax.swing.*;
+public class ejerD extends JFrame{
+    
+    public ejerD() {
+    
+        setTitle("Ejercicio D");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        JLabel numero = new JLabel("Ingrese el radio de la esfera: ");
+        JTextField num1 = new JTextField (10);
+        
+        JTextArea resultado = new JTextArea(10,10);
+        JButton boton = new JButton("Mostrar");
+    
+        boton.addActionListener(e-> {
+            try{
+              double radio=Double.parseDouble(num1.getText());
+   
+              double result= ((4.0/3.0)* Math.PI * Math.pow(radio, 3));
+              
+              resultado.setText("La longitud de la hipotenusa: "+result);
+            }catch (NumberFormatException ex){
+                resultado.setText("Error.");
+            }
+        });
+        
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel.add(numero);
+        panel.add(num1);
+        panel.add(boton);
+        panel.add(resultado);
+        
+        add(panel);
+        pack();
+        setLocationRelativeTo(null);
+    }
+    
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            ejerD ejercicio = new ejerD();
+            ejercicio.setVisible(true);
+        });
+}
+}
