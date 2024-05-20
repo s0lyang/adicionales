@@ -1,0 +1,69 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package proy;
+
+/**
+ *
+ * @author Usuario
+ */
+import javax.swing.*;
+public class ejerE extends JFrame {
+    
+    public ejerE() {
+    
+        setTitle("Ejercicio E");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        JLabel numero = new JLabel("Ingrese el lado a: ");
+        JTextField num1 = new JTextField (10);
+        
+        JLabel numero1 = new JLabel("Ingrese el lado b: ");
+        JTextField num2 = new JTextField (10);
+        
+        JLabel numero2 = new JLabel("Ingrese el lado C: ");
+        JTextField num3 = new JTextField (10);
+        
+        JTextArea resultado = new JTextArea(10,10);
+        JButton boton = new JButton("Mostrar");
+        
+        boton.addActionListener(e-> {
+            try{
+              double a=Double.parseDouble(num1.getText());
+              double b=Double.parseDouble(num2.getText());
+              double c=Double.parseDouble(num3.getText());
+              
+              double p=((a+b+c)/2);
+              double area=Math.sqrt(p*(p-a)*(p-b)*(p-c));
+              
+              resultado.setText("El area del triángulo es: "+area);
+            }catch (NumberFormatException ex){
+                resultado.setText("Error.");
+            }
+        });
+        
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel.add(numero);
+        panel.add(num1);
+        panel.add(numero1);
+        panel.add(num2);
+        panel.add(numero2);
+        panel.add(num3);
+        panel.add(boton);
+        panel.add(resultado);
+        
+        add(panel);
+        pack();
+        setLocationRelativeTo(null);
+    }
+    
+    
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            ejerE ejercicio = new ejerE();
+            ejercicio.setVisible(true);
+        });
+}
+}
