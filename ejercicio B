@@ -1,0 +1,51 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package proy;
+
+/**
+ *
+ * @author Usuario
+ */
+import javax.swing.*;
+public class ejerB extends JFrame {
+    
+    public ejerB () {
+    
+        setTitle("Ejercicio B");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        JLabel velocidad = new JLabel("Ingrese una velocidad en kilometros por hora: ");
+        JTextField metro = new JTextField (10);
+        JTextArea resultado = new JTextArea(10,10);
+        JButton boton = new JButton("Mostrar");
+    
+        boton.addActionListener(e-> {
+            try{
+              double kmh=Double.parseDouble(metro.getText());
+              double result=kmh*1000 / 3600;
+              
+              resultado.setText("Kilometros pasados a metros por segundo: "+result);
+            }catch (NumberFormatException ex){
+                resultado.setText("Error.");
+            }
+        });
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel.add(velocidad);
+        panel.add(metro);
+        panel.add(boton);
+        panel.add(resultado);
+
+        add(panel);
+        pack();
+        setLocationRelativeTo(null);
+    }
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            ejerB ejercicio = new ejerB();
+            ejercicio.setVisible(true);
+        });
+}
+}
