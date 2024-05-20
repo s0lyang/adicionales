@@ -1,0 +1,60 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package proy;
+
+/**
+ *
+ * @author Usuario
+ */
+import javax.swing.*;
+public class ejerC extends JFrame {
+    
+    public ejerC () {
+    
+        setTitle("Ejercicio C");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        JLabel num1 = new JLabel("Ingrese un número: ");
+        JTextField cateto1 = new JTextField (10);
+        
+        JLabel num2 = new JLabel("Ingrese otro número: ");
+        JTextField cateto2 = new JTextField (10);
+        
+        JTextArea resultado = new JTextArea(10,10);
+        JButton boton = new JButton("Mostrar");
+    
+        boton.addActionListener(e-> {
+            try{
+              double catet1=Double.parseDouble(cateto1.getText());
+              double catet2=Double.parseDouble(cateto2.getText());
+   
+              double result= Math.sqrt(catet1 * catet1 + catet2 * catet2);
+              
+              resultado.setText("La longitud de la hipotenusa: "+result);
+            }catch (NumberFormatException ex){
+                resultado.setText("Error.");
+            }
+        });
+        
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel.add(num1);
+        panel.add(cateto1);
+        panel.add(num2);
+        panel.add(cateto2);
+        panel.add(boton);
+        panel.add(resultado);
+
+        add(panel);
+        pack();
+        setLocationRelativeTo(null);
+    }
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            ejerC ejercicio = new ejerC();
+            ejercicio.setVisible(true);
+        });
+}
+}
