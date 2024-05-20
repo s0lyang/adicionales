@@ -1,0 +1,53 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package proy;
+
+/**
+ *
+ * @author Usuario
+ */
+import javax.swing.* ;
+public class ejerA extends JFrame {
+    
+    public ejerA () {
+    
+        setTitle("Ejercicio A");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        JLabel grados = new JLabel("Ingrese los grados centígrados: ");
+        JLabel fanherit = new JLabel();    
+        JTextField grades = new JTextField (10);
+        JLabel resultado = new JLabel();
+        JButton boton = new JButton("Mostrar");
+        
+        boton.addActionListener(e-> {
+            try{
+              double grads=Double.parseDouble(grades.getText());
+              double result=(( 9 * grads / 5)+ 32);
+              
+              resultado.setText("Los grados centigrados pasados a Fahrenheint: "+result);
+            }catch (NumberFormatException ex){
+                resultado.setText("Error.");
+            }
+        });
+        JPanel panel = new JPanel();
+        panel.add(grados);
+        panel.add(grades);
+        panel.add(fanherit);
+        panel.add(boton);
+        panel.add(resultado);
+
+        add(panel);
+        pack();
+        setLocationRelativeTo(null);
+    
+    }
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            ejerA ejercicio = new ejerA();
+            ejercicio.setVisible(true);
+        });
+}
+}
