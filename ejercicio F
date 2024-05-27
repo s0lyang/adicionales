@@ -1,0 +1,59 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package proxy;
+
+/**
+ *
+ * @author NuevoUsuario
+ */
+import javax.swing.*;
+public class ejercicioF extends JFrame {
+    
+     public ejercicioF() {
+
+        setTitle("Ejercicio F");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JLabel numero = new JLabel("Ingrese un nùmero de 3 cifras: ");
+        JTextField num = new JTextField (10);
+
+        JTextArea resultado = new JTextArea(10,10);
+        JButton boton = new JButton("Mostrar");
+        
+        boton.addActionListener(e-> {
+            try{
+              int N=Integer.parseInt(num.getText());
+
+              int uno=(N/100) %10;
+              int dos=((N/10)%10);
+              int tres=(N%10);
+
+              resultado.setText("Las cifras: "+uno+ " "+dos+" "+tres);
+
+            }catch (NumberFormatException ex){
+                resultado.setText("Error.");
+            }
+        });
+        
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel.add(numero);
+        panel.add(num);
+        panel.add(boton);
+        panel.add(resultado);
+
+        add(panel);
+        pack();
+        setLocationRelativeTo(null);
+    }
+
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            ejercicioF ejercicio = new ejercicioF();
+            ejercicio.setVisible(true);
+        });
+}
+}
