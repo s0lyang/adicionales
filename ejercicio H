@@ -1,0 +1,77 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package proxy;
+
+/**
+ *
+ * @author NuevoUsuario
+ */
+import javax.swing.*;
+public class ejercicioH extends JFrame {
+    
+    public ejercicioH() {
+    
+    setTitle("Ejercicio H");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JLabel numero = new JLabel("Ingrese su dia de nacimiento: ");
+        JTextField day = new JTextField (10);
+        
+        JLabel num = new JLabel("Ingrese su mes(número) de nacimiento: ");
+        JTextField month = new JTextField (10);
+        
+        JLabel nu = new JLabel("Ingrese su año de nacimiento: ");
+        JTextField year = new JTextField (10);
+
+        JTextArea resultado = new JTextArea(10,10);
+        JButton boton = new JButton("Mostrar");
+
+
+        boton.addActionListener(e-> {
+            try{
+              int dia=Integer.parseInt(day.getText());
+              int mes=Integer.parseInt(month.getText());
+              int año=Integer.parseInt(year.getText());
+              
+              int suma=(dia+mes+año);
+              
+              int cifra1=(suma/1000);
+              int cifra2=(suma/100%10);
+              int cifra3=(suma/10%10);
+              int cifra4=(suma%10);
+              
+              int suerte= cifra1+cifra2+cifra3+cifra4;
+
+              resultado.setText("Número de la suerte: "+suerte);
+
+            }catch (NumberFormatException ex){
+                resultado.setText("Error.");
+            }
+        });
+        
+        JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel.add(numero);
+        panel.add(day);
+        panel.add(num);
+        panel.add(month);
+        panel.add(nu);
+        panel.add(year);
+        panel.add(boton);
+        panel.add(resultado);
+
+        add(panel);
+        pack();
+        setLocationRelativeTo(null);
+    
+    }
+    
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            ejercicioH ejercicio = new ejercicioH();
+            ejercicio.setVisible(true);
+        });
+}
+}
